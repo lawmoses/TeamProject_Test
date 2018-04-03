@@ -161,10 +161,11 @@ public class BoardController {
 			int endRow = currentPage * pageSize;
 			int count = 0;
 			int number = 0;
+			
 			List articleList = null;
-			count = dbPro.getArticleCountBoard();  
+			count = dbPro.getArticleCount1();  
 			if (count > 0) {
-					articleList = dbPro.getArticlesBoard(startRow, endRow);	
+					articleList = dbPro.getArticles1(startRow, endRow);	
 				}
 			number = count - (currentPage - 1) * pageSize;
 			int bottomLine = 3;
@@ -172,10 +173,17 @@ public class BoardController {
 			int startPage = 1 + (currentPage - 1) / bottomLine * bottomLine;
 			int endPage = startPage + bottomLine - 1;
 			if (endPage > pageCount) endPage = pageCount;
+			
+			List articleList1 = null;
+			count = dbPro.getArticleCount2();  
+			if (count > 0) {
+					articleList1 = dbPro.getArticles2(startRow, endRow);	
+				}
 		
 			model.addAttribute("boardid", null);
 			model.addAttribute("count", count);
 			model.addAttribute("articleList", articleList);
+			model.addAttribute("articleList", articleList1);
 			model.addAttribute("currentPage", currentPage);
 			model.addAttribute("startPage", startPage);
 			model.addAttribute("bottomLine", bottomLine);

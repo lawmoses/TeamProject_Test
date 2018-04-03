@@ -82,7 +82,8 @@
 			</c:if>
 			
 <!-- 수정 : ${boardid } -->
-		 		<a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}">
+		 		<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}"> -->
+		 		<a href="content?num=${article.num}&pageNum=${currentPage}">
 					${article.subject}</a> 
 
  			<c:if test="article.readcount>=20">
@@ -164,7 +165,7 @@
 	</c:if>
          
     <c:if test="${count!=0}">                      
-        <c:forEach  var="article"  items="${articleList}">	
+        <c:forEach  var="article"  items="${articleList1}">	
 		<tr height="30">
 			<td align="center" width="50">${number}</td>
 			<c:set var="number" value="${number-1}"/>
@@ -181,7 +182,8 @@
 			</c:if>
 			
 <!-- 수정 : ${boardid } -->
-		 		<a href="content?num=${article.num}&pageNum=${currentPage}&boardid=2">
+		 		<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=2"> -->
+		 		<a href="${pageContext.request.contextPath}/board/content?num=${article.num}&pageNum=${currentPage}">
 					${article.subject}</a> 
 
  			<c:if test="article.readcount>=20">

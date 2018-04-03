@@ -22,10 +22,11 @@ public class BoardDBMybatis extends MybatisConnector {
 		return instance;	}
 
 	SqlSession sqlSession;
+
+// ================================================================================
+
 	
-	 
 	//게시글 수 카운팅
-	//BoaardId 삭제함
 	public int getArticleCount(String boardid) {
 		int x = 0;
 		sqlSession= sqlSession();
@@ -49,6 +50,29 @@ public class BoardDBMybatis extends MybatisConnector {
 
 	}
 	
+	//게시글 수 카운팅 boardid = 1
+		public int getArticleCount1() {
+			int x = 0;
+			sqlSession= sqlSession();
+			Map<String, String> map = new HashMap<String, String>();
+			x = sqlSession.selectOne(namespace+".getArticleCount1", map);
+			sqlSession.close();
+			return x;
+
+		}
+		
+		//게시글 수 카운팅 boardid = 1
+		public int getArticleCount2() {
+			int x = 0;
+			sqlSession= sqlSession();
+			Map<String, String> map = new HashMap<String, String>();
+			x = sqlSession.selectOne(namespace+".getArticleCount2", map);
+			sqlSession.close();
+			return x;
+
+		}
+
+// ================================================================================
 	
 	//게시글 목록 가져오기
 	public List getArticles(int startRow, int endRow, String boardid) {
@@ -74,6 +98,28 @@ public class BoardDBMybatis extends MybatisConnector {
 		return li;	
 		}
 	
+	//게시글 목록 가져오기 boardid = 1 
+	public List getArticles1(int startRow, int endRow) {
+		sqlSession= sqlSession();
+		Map map = new HashMap();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		List li = sqlSession.selectList(namespace+".getArticles1",map);
+		sqlSession.close();	
+		return li;	
+		}
+	
+	//게시글 목록 가져오기 boardid = 2
+	public List getArticles2(int startRow, int endRow) {
+		sqlSession= sqlSession();
+		Map map = new HashMap();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		List li = sqlSession.selectList(namespace+".getArticles2",map);
+		sqlSession.close();	
+		return li;	
+		}
+	
 	//추가
 	//공지 게시글 목록 가져오기 - 공지사항
 	/*public List getArticles2(int startRow, int endRow, String boardid) {
@@ -87,6 +133,8 @@ public class BoardDBMybatis extends MybatisConnector {
 		return li;	
 		}*/
 
+// ================================================================================
+	
 	
 	// 공지 게시글 추가
 	public void insertArticle(BoardDataBean article) {
