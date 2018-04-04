@@ -3,6 +3,8 @@
 
 <mapper namespace = "groupWare.mybatis">
 
+<!--############################################################################################## -->
+
 
 	<!-- 게시글 수 카운팅 -->
     <select id="getArticleCount"  resultType="int"  parameterType="hashmap">
@@ -12,24 +14,26 @@
 			</if>
 	 </select>
 	 
-	 
 	  <!-- 장효추가 -->
 	  <!-- 게시글 수 카운팅  boardid 구분 없이  -->
     <select id="getArticleCountBoard"  resultType="int"  parameterType="hashmap">
 		select nvl(count(*),0)  from board
 	 </select>
 	 
-	 <!-- 게시글 수 카운팅 boardid 1 -->
+	 <!-- 게시글 수 카운팅 boardid 1번 -->
     <select id="getArticleCount1"  resultType="int"  parameterType="hashmap">
 		select nvl(count(*),0)  from board WHERE boardid = 1 
 	 </select>
 	 
-	 <!-- 게시글 수 카운팅 boardid 2 -->
+	 <!-- 게시글 수 카운팅 boardid 2번 -->
     <select id="getArticleCount2"  resultType="int"  parameterType="hashmap">
 		select nvl(count(*),0)  from board WHERE boardid = 2
 	 </select>
 	 
 	 
+<!--############################################################################################## -->
+
+
 	 
 	 <!-- 게시글 한개 불러오는 -->
       <select id="boardList"  resultType="Board"  parameterType="hashmap">
@@ -42,6 +46,9 @@
 			</if>
 	 </select>
 	 
+	 
+<!--############################################################################################## -->
+
 	 
 	 <!-- 게시글 전체 가져오기  -->
 	  <select id="getArticles"  resultType="Board"  parameterType="hashmap">
@@ -65,7 +72,7 @@
 	 </select>
 	 
 	 
-	 <!-- 게시글 전체 가져오기 boardid 1  -->
+	 <!-- 게시글 전체 가져오기 boardid 1번  -->
 	  <select id="getArticles1"  resultType="Board"  parameterType="hashmap">
 		 select * from 
 			( select rownum rnum ,a.* 
@@ -75,7 +82,7 @@
 		 , re_step) a ) where rnum  between #{startRow} and #{endRow}  
 	 </select>
 	 
-	 <!-- 게시글 전체 가져오기 boardid 2  -->
+	 <!-- 게시글 전체 가져오기 boardid 2번  -->
 	  <select id="getArticles2"  resultType="Board"  parameterType="hashmap">
 		 select * from 
 			( select rownum rnum ,a.* 
@@ -97,6 +104,8 @@
 	 </select> -->
 	 
 	 
+<!--############################################################################################## -->
+
 	 <!-- 게시글 추가 -->
 	 <insert id="insertBoard"   parameterType="Board">
 			 	insert into board(num,writer,email,subject,
@@ -121,6 +130,9 @@
 			#{ref},#{re_step},#{re_level},#{content},#{ip},
 			 #{boardid}, #{filename}, #{filesize})
 	 </insert> -->
+
+
+<!--############################################################################################## -->
 	 
 	 
 	 <!-- insert 시퀀스 -->

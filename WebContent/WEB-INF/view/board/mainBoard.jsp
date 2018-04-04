@@ -82,8 +82,10 @@
 			</c:if>
 			
 <!-- 수정 : ${boardid } -->
-		 		<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}"> -->
-		 		<a href="content?num=${article.num}&pageNum=${currentPage}">
+<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}"> -->
+<!-- 수정 : content?num=${article.num}&pageNum=${currentPage} 에서 => 맨 앞에 board/ 추가 -->
+<!-- board/content?num=${article.num}&pageNum=${currentPage} -->
+		 		<a href="board/content?num=${article.num}&pageNum=${currentPage}&boardid=1">
 					${article.subject}</a> 
 
  			<c:if test="article.readcount>=20">
@@ -182,8 +184,10 @@
 			</c:if>
 			
 <!-- 수정 : ${boardid } -->
-		 		<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=2"> -->
-		 		<a href="${pageContext.request.contextPath}/board/content?num=${article.num}&pageNum=${currentPage}">
+<!-- <a href="content?num=${article.num}&pageNum=${currentPage}&boardid=${boardid}"> -->
+<!-- 수정 : content?num=${article.num}&pageNum=${currentPage} 에서 => 맨 앞에 board/ 추가 -->
+<!-- board/content?num=${article.num}&pageNum=${currentPage} -->
+		 		<a href="board/content?num=${article.num}&pageNum=${currentPage}&boardid=2">
 					${article.subject}</a> 
 
  			<c:if test="article.readcount>=20">
